@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HW5 JavaScript Practice - Martina Tan</title>
+	<style type = "text/css">
+		html,body {font-size: 24px;}
+	</style>
+</head>
+
+<body>
+	<h1>
+		Welcome to Joe's Hotdogs!
+	</h1>
+
+	<h2>
+		Your Order
+	</h2>
+
+	<div id="quantities">
+
+	</div>
+
+	<script language = "javascript">
+		num_hotdogs= prompt ("How many hotdogs?", "");
+		num_fries = prompt ("How many fries?", "");
+		num_sodas = prompt ("How many sodas?", "");
+
+		subtotal_hotdogs = num_hotdogs * 3.25;
+		subtotal_fries = num_fries * 2;
+		subtotal_sodas = num_sodas * 1.50;
+
+		document.getElementById('quantities').innerHTML += '# of Hotdogs: ' + num_hotdogs + ' at $3.25 is $' + subtotal_hotdogs.toFixed(2);
+		document.getElementById('quantities').innerHTML += '<br># of Fries: ' + num_fries + ' at $2.00 is $' + subtotal_fries.toFixed(2);
+		document.getElementById('quantities').innerHTML += '<br># of Sodas: ' + num_sodas + ' at $1.50 is $' + subtotal_sodas.toFixed(2);
+
+		pre_discount = subtotal_hotdogs + subtotal_fries + subtotal_sodas;
+
+		if (pre_discount > 20)
+		{
+			subtotal = pre_discount * .9;
+			document.getElementById('quantities').innerHTML += "<br>You qualified for our 10% discount.";
+		}
+		else
+		{
+			subtotal = pre_discount;
+			document.getElementById('quantities').innerHTML += "<br>You did not qualify for our 10% discount";
+		}
+
+		document.getElementById('quantities').innerHTML += "<br>Subtotal: $" + subtotal.toFixed(2); 
+
+		meals_tax = subtotal * .0625;
+
+		document.getElementById('quantities').innerHTML += "<br>Meals Tax: $" + meals_tax.toFixed(2);
+
+		total = subtotal + meals_tax;
+
+		document.getElementById('quantities').innerHTML += "<br>Total: $" + total.toFixed(2);
+	</script>
+</body>
+</html>
